@@ -2,7 +2,7 @@ package org.sopt.assignment1;
 
 public class Diary {
     private Long id;
-    private final String body;
+    private String body;
 
     public Diary(Long id, String body) {
         this.id = id;

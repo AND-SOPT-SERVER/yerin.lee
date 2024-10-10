@@ -22,7 +22,8 @@ public class DiaryRepository {
         for(long index = 1; index <= numbering.intValue(); index++) {
             final String body = storage.get(index);
             //(2-1) 불러온 값을 구성한 자료구조로 이관
-            diaryList.add(new Diary(index, body));
+            if(body != null)
+                diaryList.add(new Diary(index, body));
         }
         //(3) 저장한 자료구조 응답
         return diaryList;
@@ -31,5 +32,10 @@ public class DiaryRepository {
     void delete(final String id) {
         long parseId = Long.parseLong(id);
         storage.remove(parseId);
+    }
+
+    void update(final String id, final String body) {
+        long parseId = Long.parseLong(id);
+        storage.put(parseId, body);
     }
 }
