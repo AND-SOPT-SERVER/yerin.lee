@@ -39,4 +39,10 @@ public class DiaryService {
                 .createdAt(diary.getCreatedAt())
                 .build();
     }
+
+    public void deleteDiary(Long id){
+        Diary diary = diaryRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("Diary not found"));
+        diaryRepository.delete(diary);
+    }
 }
