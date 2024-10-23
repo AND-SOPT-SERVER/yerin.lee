@@ -50,4 +50,16 @@ public class Diary {
     public String getTitle() {
         return title;
     }
+
+    public String getContent() {
+        return content;
+    }
+
+    public String getCategory() {
+        return category;
+    }
+
+    public LocalDateTime getCreatedAt() {
+        return createdAt;
+    }
 }
