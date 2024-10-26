@@ -1,6 +1,7 @@
 package com.sopt_server.seminar.api.service;
 
 import com.sopt_server.seminar.api.domain.Diary;
+import com.sopt_server.seminar.api.dto.request.DiaryPatchRequest;
 import com.sopt_server.seminar.api.dto.request.DiaryPostRequest;
 import com.sopt_server.seminar.api.dto.response.DiaryGetResponse;
 import com.sopt_server.seminar.api.repository.DiaryRepository;
@@ -38,6 +39,12 @@ public class DiaryService {
                 .content(diary.getContent())
                 .createdAt(diary.getCreatedAt())
                 .build();
+    }
+
+    public void patchDiary(Long id, DiaryPatchRequest diaryPatchRequest){
+        Diary diary = diaryRepository.findById(id)
+                .orElseThrow(()->new RuntimeException("Diary not found"));
+        diary.setContent(diaryPatchRequest.content());
     }
 
     public void deleteDiary(Long id){

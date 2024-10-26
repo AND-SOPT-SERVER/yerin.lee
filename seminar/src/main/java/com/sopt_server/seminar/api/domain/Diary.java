@@ -62,4 +62,8 @@ public class Diary {
     public LocalDateTime getCreatedAt() {
         return createdAt;
     }
+
+    public void setContent(String content) {
+        this.content = content;
+    }
 }
