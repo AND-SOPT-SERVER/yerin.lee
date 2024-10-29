@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 @RestController
@@ -36,6 +37,11 @@ public class DiaryController {
     @GetMapping("/diary/{diaryId}")
     public ResponseEntity getDiary(@PathVariable Long diaryId){
         return ResponseEntity.ok(diaryService.getDiary(diaryId));
+    }
+
+    @GetMapping("/diary")
+    public ResponseEntity getDiaryList(@RequestParam int page, @RequestParam int size){
+        return ResponseEntity.ok(diaryService.getDiaryList(page,size));
     }
 
     @PatchMapping("/diary/{diaryId}")

@@ -5,10 +5,15 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import java.time.LocalDateTime;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
+import lombok.NoArgsConstructor;
+import lombok.RequiredArgsConstructor;
 
 @Builder
 @Entity
+@NoArgsConstructor
+@AllArgsConstructor
 public class Diary {
 
     @Id
@@ -24,24 +29,6 @@ public class Diary {
     private LocalDateTime createdAt;
 
     private LocalDateTime updatedAt;
-
-    public Diary() {}
-
-    public Diary(String title, String content, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.title = title;
-        this.content = content;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
-
-    public Diary(Long id, String title, String content, String category, LocalDateTime createdAt, LocalDateTime updatedAt) {
-        this.id = id;
-        this.title = title;
-        this.content = content;
-        this.category = category;
-        this.createdAt = createdAt;
-        this.updatedAt = updatedAt;
-    }
 
     public Long getId() {
         return id;
