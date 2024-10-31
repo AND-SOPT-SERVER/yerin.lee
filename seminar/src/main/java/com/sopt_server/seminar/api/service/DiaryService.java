@@ -52,6 +52,7 @@ public class DiaryService {
                 .build();
     }
 
+    @Transactional
     public void patchDiary(Long id, DiaryPatchRequest diaryPatchRequest){
         Diary diary = diaryRepository.findById(id)
                 .orElseThrow(()->new RuntimeException("Diary not found"));
@@ -65,7 +66,6 @@ public class DiaryService {
     }
 
     public Page<DiaryListGetResponse> getDiaryList(int page, int size){
-
         PageRequest pageRequest = PageRequest.of(page, size, Sort.by(Direction.DESC, "createdAt"));
         Page<Diary> diaryList = diaryRepository.findAll(pageRequest);
         List<DiaryListGetResponse> diaryListGetResponses = diaryList.stream()
